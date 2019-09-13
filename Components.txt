@@ -1,0 +1,59 @@
+ 1. LCD display
+ 2. Buzzer
+ 3. 8051 Microcontroller
+ 4. Relay	
+ 5. Energy reading module
+ 6. Raspberry Pi
+ 7. Network module
+
+1. BUZZER
+A buzzer or beeper is a signalling device, usually electronic, typically used in automobiles, household appliances such as a microwave oven, or game shows. It most commonly consists of a number of switches or sensors connected to a control unit that determines if and which button was pushed or a preset time has lapsed, and usually illuminates a light on the appropriate button or control panel, and sounds a warning in the form of a continuous or intermittent buzzing or beeping sound. Initially this device was based on an electromechanical system which was identical to an electric bell without the metal gong (which makes the ringing noise).
+
+2. RELAY
+A relay is an electrically operated switch. Many relays usean electromagnet to operate a switching mechanism mechanically, but other operating principles are also used. Relays are used where it is necessary to control a circuit by a low-power signal (with complete electrical isolation between control and controlled circuits), or where several circuits must be controlled by one signal. The first relays were used in long distance telegraph circuits, repeating the signal coming in from one circuit and re-transmitting it to another. Relays were used extensively in telephone exchanges and early computers to perform logical operations.
+
+A type of relay that can handle the high power required to directly control an electric motor or other loads is called a contactor. Solid-state relays control power circuits with no moving parts, instead using a semiconductor device to perform switching. Relays with calibrated operating characteristics and sometimes multiple operating coils are used to protect electrical circuits from overload or faults; in modern electric power systems these functions are performed by digital instruments still called "protective relays".
+
+3. LCD (LIQUID CRYSTAL DISPLAY)
+LCD (Liquid Crystal Display) screen is an electronic display module and find a wide range of applications. A 16x2 LCD display is very basic module and is very commonly used in various devices and circuits. These modules are preferred over seven segments and other multi segment LEDs. The reasons being: LCDs are economical; easily programmable; have no limitation of displaying special & even custom characters (unlike in seven segments), animations and so on.
+A 16x2 LCD means it can display 16 characters per line and there are 2 such lines. In this LCD each character is displayed in 5x7 pixel matrix. This LCD has  two registers, namely, Command and Data. The command register stores the command instructions given to the LCD. A command is an instruction given to LCD to do a predefined task like initializing it, clearing its screen, setting the cursor position, controlling display etc. The data register stores the data to be displayed on the LCD. The data is the ASCII value of the character to be displayed on the LCD.
+
+
+4. AT89C51 MICROCONTROLLER
+Microcontroller is a general purpose device, which integrates a number of the components of a microprocessor system on to single chip. It has inbuilt CPU, memory and peripherals to make it as a mini computer. A microcontroller combines on to the same microchip:
+•	The CPU core
+•	Memory(both ROM and RAM)
+•	Some parallel digital i/o
+•	Microcontrollers will combine other devices such as:
+•	A timer module to allow the microcontroller to perform tasks for certain time periods.
+•	A serial I/O port to allow data to flow between the controller and other devices such as a PIC or another microcontroller.
+•	An ADC to allow the microcontroller to accept analogue input data for processing.
+
+Microcontrollers are:
+•	-Smaller in size
+•	Consumes less power
+•	Inexpensive
+Micro controller is a standalone unit, which can perform functions on its own without any requirement for additional hardware like I/O ports and external memory. The heart of the microcontroller is the CPU core. In the past, this has traditionally been based on a 8-bit microprocessor unit. 
+
+
+	AT89C51 is the 40 pins, 8 bit Microcontroller manufactured by Atmel group. It is the flash type reprogrammable memory. Advantage of this flash memory is we can erase the program within few minutes. It has 4kb on chip ROM and  128 bytes internal RAM and 32 I/O pin  as arranged as port 0 to port 3 each has 8 bit bin .Port 0 contain 8 data line(D0-D7) as well as low order address line(AO-A7).
+Port 2 contain higher order address line (A8-A15). Port 3 contains special purpose register such as serial input receiver register SBUF, interrupt INT0,INT1  and timers T0 , T1. Many of the pins have multi functions which can be used as general purpose I/O pins (or) Special purpose function can be decided by the programmer itself.
+Features:
+•	-4K Bytes of In-System Reprogrammable Flash Memory
+•	-Endurance  1,000 Write/Erase Cycles
+•	-Fully Static Operation: 0 Hz to 24 MHz
+•	-Three-Level Program Memory Lock
+•	-128 x 8-Bit Internal RAM
+•	-32 Programmable I/O Lines
+•	-Two 16-Bit Timer/Counters
+•	-Six Interrupt Sources
+•	-Programmable Serial Channel
+•	-Low Power Idle and Power Down Mode
+
+
+ 			
+5. RASPBERRY PI
+The Raspberry Pi has a Broadcom BCM2835 system on a chip (SoC), which includes an ARM1176JZF-S700 MHz processor, Video Core IV GPU, and was originally shipped with 256 megabytes of RAM, later upgraded to 512 MB. It does not include a built-in hard disk or solid-state drive, but uses an SD card for booting and persistent storage.
+	
+6. ENERGY READING MODULE
+Energy reading module works based on the load. If the load is more, time period of pulse will be less and square pulse is generated. When load is less, the time period of pulse is more. The square wave is supplied to 8051 microcontroller and low to high transitions are counted.3200 low to high transitions make 1 kwh.
