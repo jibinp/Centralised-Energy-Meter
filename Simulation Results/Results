@@ -1,0 +1,16 @@
+This folder shows the simulation results using proteuis.
+
+Figure 1 : shows simulation result of proposed energy meter at sufficient balance.
+  Relay circuit is ON  and supply is live
+  No indications and alarm
+  
+The figure 2 shows simulation result of proposed energy meter at low balance.
+  Relay circuit is ON and supply is live.
+  An indication (blue led) is turned on at low balance.
+  Buzzer alarm is ON
+  
+The figure 3 shows simulation result of proposed energy meter at zero balance.
+  Relay circuit is OFF and supply is cut off. 
+  An indication (red led) is turned on at zero balance.
+  Buzzer alarm is ON.
+  
