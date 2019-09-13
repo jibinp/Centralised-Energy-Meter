@@ -1,0 +1,31 @@
+1. Start
+2. Initialize R1 with current amount
+3. Check the amount
+4. If amount is zero goto step 3
+5. Turn ON the relay
+6. Initialize the LCD display for first line
+7. Initialize R2 & R3 with 30H and R4 with 0H
+8. Obtain the hundredth digit of amount and store in R2
+9. Obtain the tenth digit of amount and store in R3
+10. Obtain the unit’s digit of amount and store in R4
+11. Display balance amount 
+12. Subtract 06 from balance amount
+13. If carry flag is not set goto step 18 	
+14. Count the energy pulse
+15. For five pulses reduce one rupee 
+16. If amount is zero goto step 24 
+17. Goto step 3
+18. Turn ON blue led
+19. Turn ON buzzer
+20. Make some delay
+21. Turn OFF the buzzer
+22. Display the balance amount
+23. Initialize LCD display for second line  
+24. Display the message “LOW BALANCE”
+25. Goto step 14
+26. Turn ON the red led and the buzzer
+27. Cut OFF supply
+28. Display the balance amount
+29. Initialize the display for second line
+30. Display the message “PLEASE RECHARGE”
+31. Goto step 3
