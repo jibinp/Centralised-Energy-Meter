@@ -7,11 +7,12 @@ Meter Display :
 Meter showing the balance amount : 
 ![alt text](https://raw.githubusercontent.com/jibinp/Centralised-Energy-Meter/master/Images/Balance.jpg)
 
-
 Meter showing the present unit thariff : 
+
 ![alt text](https://raw.githubusercontent.com/jibinp/Centralised-Energy-Meter/master/Images/Thariff.jpg)
 
 Text Message : 
+
 ![alt text](https://raw.githubusercontent.com/jibinp/Centralised-Energy-Meter/master/Images/Message.jpg)
 
 The proposed system block diagram : 
