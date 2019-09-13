@@ -1,0 +1,141 @@
+MOV R7,#00H			//clear R7 and P2.3
+CLR P2.3
+MOV R1,#23H                     //Initialising R1 with amount
+START:
+MOV A,R1			//Load A with current amount
+JZ START			//Jump to location START  if  zero flag is set
+SETB P2.7			//Relay is ON
+ACALL INTL1			//Initialize LCD Display
+MOV R2,#30H			//Initialize R2,R3 with 30H
+MOV R3,#30H
+MOV R4,#0H			//Initialize R4 with 0H
+MOV A,R1			//Move the contents of register R1 to accumulator
+
+CH:SUBB A,#64H	                //Obtain hundredth digit of amount and store in R2
+JC NH				//Jump to location NH if carry flag is set
+INC R2				//Increment R2 register by one
+JMP CH				//Jump to location CH
+NH:CLR C			//Clear carry register
+ADD A,#64H			//Add direct data 64H to accumulator
+
+CJNE A,#0AH,NH1			//Compare the contents of A with 0AH & if not equal,jump to NH1
+MOV A,#00H 			//Move the direct data 00H to accumulator
+INC R3     			//Increment R3 register        
+SJMP NT1			//Short jump to NT1
+NH1:SUBB A,#0AH			//Subtract 0AH from accumulator along with borrow
+JC NT   			//Jump to NT if carry flag is set  
+INC R3				//Increment R3 register
+JMP NH1   			//Jump to NH1
+NT:ADD A,#0AH			//Add direct data 0AH to accumulator
+NT1:ADD A,#30H	                //Store unit digit in R4
+MOV R4,A
+MOV A,R2 			//Move the contents of R2 register to accumulator      
+ACALL DAT			//Call the subroutine DAT
+MOV A,R3 			//Move the contents of R3 register to accumulator
+ACALL DAT			//Call the subroutine DAT
+MOV A,R4			//Move the contents of R4 register to accumulator
+ACALL DAT			//Call the subroutine DAT
+ACALL DELAY			//Call the subroutine DELAY
+ACALL DELAY			//Call the subroutine DELAY
+MOV A,#06H			//Move the direct data 06H to accumulator
+CLR C				//Clear carry register			
+SUBB A,R1			//Subtract the contents of R1 from A along with borrow
+CLR P2.4                        //Clear P2.4 pin
+CLR P2.5                        //Clear P2.5 pin 
+CLR P2.6                        //Clear P2.6 pin
+SETB P2.7                       //Set P2.7 pin
+JNC WARNING			//Jump to WARNING if carry flag is no set
+HERE: JNB P2.3,HERE	        //If P2.3 pin = 0,jump to HERE
+INC R7                          //Increment R7 register
+HERE1:JB P2.3,HERE1             //If p2.3 pin = 1,jump to HERE1
+CJNE R7,#05H,HERE		//Energy meter constant is 5pulse/Kwhr
+MOV R7,#00H			//5 Pulse = 1 Unit
+DEC R1				//For 1 Unit reduce Rs.1
+MOV A,R1			//Load A with new amount
+JZ CUTOFF			//if balance is zero jump to location CUTTOFF
+LJMP START
+WARNING:
+SETB P2.4			//Make P2.4 HIGH
+SETB P2.5			//Make P2.5 HIGH
+ACALL DELAY			//Call DELAY subroutine
+CLR P2.5			//Make P2.5 LOW
+ACALL INTL2			//Call INTL2 subroutine
+ACALL WARNF			//Call WARNF subroutine
+SJMP HERE			//Jump to location HERE
+CUTOFF:
+SETB P2.5                       //Make P2.5 HIGH
+SETB P2.6			//Make P2.6 HIGH
+CLR P2.7                        //Make P2.7 LOW
+CLR P2.4                        //Make P2.4 LOW
+ACALL INTL2                     //Call INTL2 subroutine
+ACALL TRIPF			//Call TRIPF subroutine
+SJMP START			//Jump to location START
+COMMAND:MOV P1,A                //Move content of A to P1
+CLR P2.0                        //Make P2.0 LOW
+CLR P2.1			//Make P2.1  LOW
+SETB P2.2			//Make P2.2 HIGH
+ACALL DELAY			//Call DELAY subroutine
+CLR P2.2			//Make P2.2  LOW
+RET                             //Return from subroutine
+DAT:MOV P1,A			//Move content of A to P1
+SETB P2.0			//Make P2.0 HIGH
+CLR P2.1			//Make P2.1 LOW
+SETB P2.2			//Make P2.2 HIGH
+ACALL DELAY			//Call DELAY subroutine
+CLR P2.2			//Make P2.2 LOW
+RET				//Return from subroutine
+DELAY:MOV R5,#32H 		//Initialise R5 with 32
+H2:MOV R6,#0FFH			//Initialise R6 with 0FF
+
+H1:DJNZ R6,H1		 	//Decrement R6 upto 0
+DJNZ R5,H2			//Decrement R5upto 0
+RET				//Return from subroutine
+INTL1:MOV DPTR,#COM 		//Initialise  DPTR with COM
+C1:CLR A 			//Clear A
+MOVC A,@A+DPTR		 	//Load A with  content in DB-COM
+ACALL COMMAND			//Call COMMAND subroutine
+ACALL DELAY             	//Call DELAY subroutine
+JZ BALP                         //Jump on zero to BALP
+INC DPTR                        //Increment DPTR
+SJMP C1				//Jump to location C1
+COM:DB 38H,0EH,01,06,80H,0
+BALP:MOV DPTR,#BAL              //Initialise  DPTR with BAL
+B1:CLR A                        //Clear A
+MOVC A,@A+DPTR   		//Load A with  content in DB-BAL
+ACALL DAT			//Call DAT subroutine
+JZ OUT                        	//Jump on zero OUT
+INC DPTR                        //increment DPTR
+SJMP B1				//Jump to location B1
+OUT:RET				//Return from subroutine
+BAL:DB "Balance Rs.",0
+INTL2:MOV A,#0C0H               //Move 0C0 to A
+
+ACALL COMMAND			//Call COMMAND subroutine
+ACALL DELAY			//Call DELAY subroutine
+RET				//Return from subroutine
+
+WARNF:MOV DPTR,#WARN		//Initialise  DPTR with WARN
+W1:CLR A                        //Clear A
+MOVC A,@A+DPTR			//Load A with  content in DB-WARN
+ACALL DAT			//Call DAT subroutine
+ACALL DELAY			//Call DELAY subroutine
+JZ OUTW                         //Jump on zero OUTW
+INC DPTR                        //Increment DPTR
+SJMP W1				//Jump to location W1
+OUTW:RET			//Return from subroutine
+WARN:DB "LOW BALANCE",0
+TRIPF:MOV DPTR,#TRIP		//Initialise  DPTR with TRIP
+TP1:CLR A                       //Clear A
+MOVC A,@A+DPTR   		//Load A with  content in DB-TRIP
+ACALL DAT			//Call DAT subroutine
+ACALL DELAY                	//Call DELAY subroutine
+JZ OUTT                         //Jump on zero to  OUTT
+INC DPTR                        //Increment DPTR
+SJMP TP1			//Jump to location TP1
+
+OUTT:RET			//Return from subroutine
+TRIP:DB "PLEASE RECHARGE",0
+END                             //END
+
+
+ 
