@@ -7,7 +7,7 @@ Meter Display :
 Meter showing the balance amount : 
 ![alt text](https://raw.githubusercontent.com/jibinp/Centralised-Energy-Meter/master/Images/Balance.jpg)
 
-Meter showing the present uint thariff: 
+Meter showing the present unit thariff: 
 ![alt text](https://raw.githubusercontent.com/jibinp/Centralised-Energy-Meter/master/Images/Thariff.jpg)
 
 Text Message : 
