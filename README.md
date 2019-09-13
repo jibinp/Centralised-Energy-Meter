@@ -16,4 +16,4 @@ Text Message :
 ![alt text](https://raw.githubusercontent.com/jibinp/Centralised-Energy-Meter/master/Images/Message.jpg)
 
 The proposed system block diagram : 
-![alt text](https://raw.githubusercontent.com/jibinp/Centralised-Energy-Meter/master/CECS-Block-Diagram.png)
+![alt text](https://raw.githubusercontent.com/jibinp/Centralised-Energy-Meter/master/CECS-Block-Diagram.PNG)
