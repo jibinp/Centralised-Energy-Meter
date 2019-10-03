@@ -3,18 +3,19 @@ The main objective of this prepaid energy meter project is to minimize the illeg
 
 ### Technologies: ###
    Arduino C, Python, Assembly Language Coding for micro-controller.
+   
 
-Meter Display : 
+### Meter Display : 
 ![alt text](https://raw.githubusercontent.com/jibinp/Centralised-Energy-Meter/master/Images/Intro.jpg)
 
-Meter showing the balance amount : 
+### Meter showing the balance amount : 
 ![alt text](https://raw.githubusercontent.com/jibinp/Centralised-Energy-Meter/master/Images/Balance.jpg)
 
-Meter showing the present unit thariff : 
+### Meter showing the present unit thariff : 
 
 ![alt text](https://raw.githubusercontent.com/jibinp/Centralised-Energy-Meter/master/Images/Thariff.jpg)
 
-Text Message : 
+### Text Message : 
 
 ![alt text](https://raw.githubusercontent.com/jibinp/Centralised-Energy-Meter/master/Images/Message.jpg)
 
