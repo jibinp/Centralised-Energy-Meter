@@ -3,6 +3,12 @@ The main objective of this prepaid energy meter project is to minimize the illeg
 
 ### Technologies: ###
    Arduino C, Python, Assembly Language Coding for micro-controller.
+
+## Boards Used : 
+   Raspberry Pi, Arduino UNO, 8051 Micro controller.
+   
+## Softwares Used : 
+   Linux Terminal, Arduino GUI, Keil and proteus.
    
 
 ### Meter Display : 
